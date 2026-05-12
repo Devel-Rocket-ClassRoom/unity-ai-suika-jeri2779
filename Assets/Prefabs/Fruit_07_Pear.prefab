@@ -156,7 +156,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.051768795, y: -0.4452121}
-  m_Radius: 1.4637269
+  m_Radius: 1.1752634
 --- !u!114 &5160011194992379352
 MonoBehaviour:
   m_ObjectHideFlags: 0
