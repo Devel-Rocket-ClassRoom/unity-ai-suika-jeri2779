@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Playing, GameOver }
+public enum GameState
+{
+    Playing,
+    GameOver,
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -26,12 +30,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (State != GameState.Playing) return;
+        if (State != GameState.Playing)
+            return;
 
         bool anyOver = false;
         foreach (var fruit in activeFruits)
         {
-            if (fruit == null) continue;
+            if (fruit == null)
+                continue;
             if (fruit.IsDropped && fruit.transform.position.y > gameOverLineY)
             {
                 anyOver = true;
@@ -40,7 +46,8 @@ public class GameManager : MonoBehaviour
         }
 
         overLineTimer = anyOver ? overLineTimer + Time.deltaTime : 0f;
-        if (overLineTimer >= gameOverDelay) TriggerGameOver();
+        if (overLineTimer >= gameOverDelay)
+            TriggerGameOver();
     }
 
     public void AddScore(int points)

@@ -28,16 +28,22 @@ public class MergeHandler : MonoBehaviour
 
     IEnumerator SpawnNext(int nextLevel, Vector3 pos)
     {
-        GameObject prefab = fruitPrefabs[nextLevel - 1];
-        var go = Instantiate(prefab, pos, Quaternion.identity);
-
+        var go = Instantiate(fruitPrefabs[nextLevel - 1], pos, Quaternion.identity);
         var fruit = go.GetComponent<Fruit>();
-        fruit.Drop();   // 머지 결과물은 즉시 Dynamic
+        var rb    = go.GetComponent<Rigidbody2D>();
 
-        // 1프레임 후 콜라이더 활성 — 연쇄 머지 물리 사이클 보장
-        var col = go.GetComponent<CircleCollider2D>();
-        col.enabled = false;
-        yield return null;
-        col.enabled = true;
+        // 콜라이더 절대 비활성화 금지 — 중첩 방지
+        // Kinematic으로 시작: 콜라이더는 활성 상태, 중력/외력만 차단
+        rb.bodyType      = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        fruit.MarkDropped(); // IsDropped = true (머지 판정 활성화)
+
+        // 물리 프레임 2회 대기
+        // Kinematic 상태에서 주변 Dynamic 과일들이 자연스럽게 밀려나 안정화됨
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        // Dynamic 전환 — 이후 정상 물리 작동
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

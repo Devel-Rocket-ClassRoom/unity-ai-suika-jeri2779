@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         gameOverPanel.SetActive(false);
+        scoreText.text = "점수: 0";
     }
 
     public void UpdateScore(int score)
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
     public void ShowGameOver(int finalScore)
     {
         gameOverPanel.SetActive(true);
-        finalScoreText.text = $"최종 점수: {finalScore}";
+        finalScoreText.text = $"점수: {finalScore}";
     }
 
     public void OnRestartClicked()
