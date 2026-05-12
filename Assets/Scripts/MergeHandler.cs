@@ -29,6 +29,7 @@ public class MergeHandler : MonoBehaviour
     IEnumerator SpawnNext(int nextLevel, Vector3 pos)
     {
         var go = Instantiate(fruitPrefabs[nextLevel - 1], pos, Quaternion.identity);
+        go.transform.localScale = Vector3.one * GameManager.Instance.GetFruitScale(nextLevel);
         var fruit = go.GetComponent<Fruit>();
         var rb    = go.GetComponent<Rigidbody2D>();
 

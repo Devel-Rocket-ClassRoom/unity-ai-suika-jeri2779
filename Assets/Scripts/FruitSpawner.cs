@@ -54,6 +54,7 @@ public class FruitSpawner : MonoBehaviour
 
         var go    = Instantiate(spawnablePrefabs[level - 1],
                                 new Vector3(0f, spawnY, 0f), Quaternion.identity);
+        go.transform.localScale = Vector3.one * GameManager.Instance.GetFruitScale(level);
         var fruit = go.GetComponent<Fruit>();
         // Kinematic 상태 유지 — Drop() 호출 전까지 물리 비활성
         go.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
