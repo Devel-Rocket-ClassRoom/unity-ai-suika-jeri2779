@@ -37,3 +37,4 @@ Assets/AddressableAssetsData/*/*SharedDataBuilder.json
 
 # Unity AI Assistant 패키지 (로컬 설치본)
 Packages/com.unity.ai.assistant/
+.codex/config.toml
