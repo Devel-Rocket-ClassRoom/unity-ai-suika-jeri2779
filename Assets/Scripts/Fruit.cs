@@ -20,6 +20,7 @@ public class Fruit : MonoBehaviour
     public void Drop()
     {
         IsDropped = true;
+        GetComponent<CircleCollider2D>().enabled = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
 

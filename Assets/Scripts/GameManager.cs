@@ -38,7 +38,9 @@ public class GameManager : MonoBehaviour
         {
             if (fruit == null)
                 continue;
-            if (fruit.IsDropped && fruit.transform.position.y > gameOverLineY)
+            var col = fruit.GetComponent<CircleCollider2D>();
+            float top = fruit.transform.position.y + col.radius * fruit.transform.localScale.x;
+            if (fruit.IsDropped && top > gameOverLineY)
             {
                 anyOver = true;
                 break;

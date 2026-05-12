@@ -58,6 +58,7 @@ public class FruitSpawner : MonoBehaviour
         var fruit = go.GetComponent<Fruit>();
         // Kinematic 상태 유지 — Drop() 호출 전까지 물리 비활성
         go.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        go.GetComponent<CircleCollider2D>().enabled = false;
 
         currentFruit = go;
         canDrop      = true;

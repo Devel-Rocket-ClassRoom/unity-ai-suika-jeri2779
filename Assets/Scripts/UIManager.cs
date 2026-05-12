@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [Header("HUD")]
     public TextMeshProUGUI scoreText;
     public Image nextFruitImage;
+    public Button hudRestartButton;
 
     [Header("Game Over Panel")]
     public GameObject gameOverPanel;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
     public void OnRestartClicked()
     {
         restartButton.interactable = false;
+        if (hudRestartButton != null) hudRestartButton.interactable = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
