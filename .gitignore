@@ -32,6 +32,16 @@ crashlytics-build.properties
 Assets/AddressableAssetsData/*/*.bin*
 Assets/AddressableAssetsData/*/*SharedDataBuilder.json
 
+# TMP Essential Resources — 패키지 자동 생성, 재설치 가능
+/[Aa]ssets/TextMesh\ Pro/
+/[Aa]ssets/TextMesh\ Pro.meta
+
+# 시스템 폰트 복사본 — 라이선스·용량 이슈
+/[Aa]ssets/[Ff]onts/*.ttf
+/[Aa]ssets/[Ff]onts/*.ttc
+/[Aa]ssets/[Ff]onts/*.ttf.meta
+/[Aa]ssets/[Ff]onts/*.ttc.meta
+
 # MCP 설정 (로컬 절대경로 포함)
 .mcp.json
 
