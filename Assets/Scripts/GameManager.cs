@@ -33,8 +33,20 @@ public class GameManager : MonoBehaviour
         if (State != GameState.Playing)
             return;
 
+        CheckGameOver();
+    }
+
+
+    [Header("Fruit Scale")]
+    public float fruitMinScale = 0.3f;
+    public float fruitMaxScale = 1.8f;
+
+    //update문 로직 메서드화
+ 
+    public void CheckGameOver()
+    {   
         bool anyOver = false;
-        foreach (var fruit in activeFruits)
+        foreach(var fruit in activeFruits)
         {
             if (fruit == null)
                 continue;
@@ -46,15 +58,11 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-
+        
         overLineTimer = anyOver ? overLineTimer + Time.deltaTime : 0f;
         if (overLineTimer >= gameOverDelay)
             TriggerGameOver();
     }
-
-    [Header("Fruit Scale")]
-    public float fruitMinScale = 0.3f;
-    public float fruitMaxScale = 1.8f;
 
     public float GetFruitScale(int level)
     {
